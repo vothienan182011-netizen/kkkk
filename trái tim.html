@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gửi Em!</title>
+<style>
+  body {
+    background: #fff0f5;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+
+  /* Trái tim rơi */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(-45deg);
+    top: -10%;
+    animation: fall linear infinite;
+    opacity: 0.8;
+  }
+
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+
+  .heart::before {
+    top: -10px;
+    left: 0;
+  }
+
+  .heart::after {
+    left: 10px;
+    top: 0;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px) rotate(-45deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(120vh) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  /* Lời tỏ tình */
+  .text-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #d6336c;
+  }
+
+  .text-container p {
+    font-size: 2rem;
+    margin: 10px;
+    animation: fadeInUp 3s ease forwards;
+    opacity: 0;
+  }
+
+  .text-container p:nth-child(1) { animation-delay: 0s; }
+  .text-container p:nth-child(2) { animation-delay: 2s; }
+  .text-container p:nth-child(3) { animation-delay: 4s; }
+  .text-container p:nth-child(4) { animation-delay: 6s; }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Trái tim rơi ngẫu nhiên -->
+<script>
+  for (let i = 0; i < 50; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.animationDelay = Math.random() * 5 + "s";
+    document.body.appendChild(heart);
+  }
+</script>
+
+<!-- Lời tỏ tình -->
+<div class="text-container">
+  <p>Anh yêu em rất nhiều 💖</p>
+  <p>Mỗi ngày bên em là một phép màu ✨</p>
+  <p>Em là ánh sáng trong cuộc đời anh 🌟</p>
+  <p>Hãy luôn bên anh nhé! 💑</p>
+</div>
+
+</body>
+</html>
